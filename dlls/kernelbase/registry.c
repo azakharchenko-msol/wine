@@ -3229,8 +3229,7 @@ LSTATUS WINAPI RegLoadAppKeyA(const char *file, HKEY *result, REGSAM sam, DWORD 
     if (!file || reserved)
         return ERROR_INVALID_PARAMETER;
 
-    *result = (HKEY)0xdeadbeef;
-    return ERROR_SUCCESS;
+    return RegOpenKeyExA(HKEY_CURRENT_USER, "", KEY_ALL_ACCESS, 0, result);
 }
 
 /******************************************************************************
@@ -3244,8 +3243,7 @@ LSTATUS WINAPI RegLoadAppKeyW(const WCHAR *file, HKEY *result, REGSAM sam, DWORD
     if (!file || reserved)
         return ERROR_INVALID_PARAMETER;
 
-    *result = (HKEY)0xdeadbeef;
-    return ERROR_SUCCESS;
+    return RegOpenKeyExW(HKEY_CURRENT_USER, L"", KEY_ALL_ACCESS, 0, result);
 }
 
 
